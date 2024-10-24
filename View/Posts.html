@@ -6,65 +6,20 @@
     <title>Web 1: Aula 9</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Posts.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/Stilos.css"/>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
-    <style>
-        .listagem {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .photo-item img {
-            max-width: 100%;
-        }
-    </style>
 </head>
 <body>
 
-    <h1>Listagem</h1>
-    <div class="listagem">
+    <h1 >Listagem</h1>
+    <button class="expand-button" onclick="carregarTodosComentarios()">Carregar todos comentários</button>
+    <div class="listagem" style="text-align: center;">
         <!--Aqui dentro desse div será inserido o resultado da chamada-->
     </div>
     <div id="loading">
         <div id="progressbar"></div>
         <p>Carregando...</p>
     </div>
-
-
-    <script>
-        $("#progressbar").progressbar({
-                value: false 
-        });
-        
-        $('#loading').show();
-
-        $(document).ready(function () {
-            const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-            $.ajax({
-                url: "https://jsonplaceholder.typicode.com/posts",
-                method: "GET",
-                success: function (response) {
-                    response.forEach(retorno => {
-                        const photoItem = `
-                            <div>
-                                <h1>User ID: ${retorno.userId}</h3>
-                                <h2>Post ID: ${retorno.id}</h3>
-                                <p>Title: ${retorno.title}</p>
-                                <p>Body: ${retorno.body}</p>
-                            </div>
-                        `;
-                        $('.listagem').append(photoItem);
-                    });
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error("Erro na requisição:", textStatus, errorThrown);
-            },
-            });
-        });
-    </script>
-<script src="https://ucsvirtual.ucs.br/globalAva/midia/js/api.js?v=3" defer></script>
-<script async src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
-<script>
-window.onload = function () {
-window.ht = new HT({token: "fcd73057422dbc01ea47e8d3fce53c4d",avatar: "MAYA", align: "bottom"});}
-</script>
 </body>
 </html>

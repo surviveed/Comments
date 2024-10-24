@@ -1,0 +1,23 @@
+.container {
+            width: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .expand-button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .expand-button:hover {
+            background-color: #0056b3;
+        }
