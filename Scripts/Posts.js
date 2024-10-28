@@ -1,9 +1,15 @@
 $(document).ready(function () {
+
     const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
     $.ajax({
         url: "https://jsonplaceholder.typicode.com/posts",
         method: "GET",
+        beforeSend: function() {
+            showLoading();
+            $('#posts-container').html('<p>Carregando posts...</p>');
+        },
         success: function (response) {
+            hideLoading();
             response.forEach(retorno => {
                 const posts = `
                     <div>
@@ -27,12 +33,21 @@ $(document).ready(function () {
     });
 });
 
+function showLoading() {
+    $('#loading').show();
+}
+
+function hideLoading() {
+    $('#loading').hide();
+}
+
 
 function carregarComentarios(IdPost) {
     const content = document.getElementById('content'+IdPost);
     if (content.style.display  === 'block') {
         content.style.display = 'none';
     } else {
+        showLoading();
         content.style.display = 'block';
         
         content.innerHTML='';
@@ -41,6 +56,7 @@ function carregarComentarios(IdPost) {
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
+                hideLoading();
                 data.forEach(photo => {
                     const comments = `
                         <p><b>Name:</b> ${photo.name}</p>
@@ -61,6 +77,7 @@ function carregarComentarios(IdPost) {
 }
 var allExpanded= false;
 function carregarTodosComentarios() {
+    
         const apiUrl = `https://jsonplaceholder.typicode.com/comments`;
         const contents = document.getElementsByClassName('content');
         
@@ -78,9 +95,11 @@ function carregarTodosComentarios() {
             }
         });
         if(allExpanded){
+            showLoading();
             fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
+                hideLoading();
                 data.forEach(photo => {
                     const content = document.getElementById('content'+photo.postId);
                         content.style.display = 'block';

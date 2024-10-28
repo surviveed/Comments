@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web 1: Aula 9</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../Scripts/Posts.js"></script>
     <link rel="stylesheet" type="text/css" href="../Styles/Stilos.css"/>
@@ -17,9 +17,10 @@
     <div class="listagem" style="text-align: center;">
         <!--Aqui dentro desse div será inserido o resultado da chamada-->
     </div>
-    <div id="loading">
-        <div id="progressbar"></div>
-        <p>Carregando...</p>
+    <div id="loading" class="custom-loader">
+        <svg viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50"></circle>
+        </svg>
     </div>
 </body>
 </html>
